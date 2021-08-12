@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById("power-status").innerText = "On";
     document.getElementById("current-temperature").innerText = thermostat.degrees;
     document.getElementById("power-usage").innerText = thermostat.currentUsage();
+    let city = document.getElementById('current-city').value;
+    document.getElementById("API-temp").innerText = `The temperature in ${city} is: `;  
   };
 
   document.getElementById("up").addEventListener("click", () => {
@@ -36,14 +38,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   //api stuff
 
-document.querySelector('#select-city').addEventListener('submit', (event) => {
+document.getElementById('select-city').addEventListener('submit', (event) => {
   event.preventDefault();
-  const city = document.querySelector('#current-city').value;
-fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=25ef0e9ecc6623f749c73ab22074caf0&units=metric")
+  let city = document.getElementById('current-city').value;
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
 .then((response) => { return response.json()
 })
 .then((data) => {
-  document.querySelector('#current-temperature').innerText = data.main.temp;
+  document.getElementById("API-temp").innerText = `The temperature in ${city} is: ${data.main.temp}`;
   });
  });
 });

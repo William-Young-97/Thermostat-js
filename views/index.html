@@ -3,21 +3,41 @@
 <head>
 <title>Thermostat</title>
 <script src= "../src/thermostat.js"> </script>
+<script src= "../src/interface.js"> </script>
+
 </head>
 
 <body>
 
-    <button type="button">Temprature up</button>
+    <button type="button" id="up">Temprature up</button>
     <br>
-    <button type="button">Temprature down</button>
+    <button type="button" id="down">Temprature down</button>
     <br>
-    <button type="button">Power saving mode on</button>
+    <button type= "button" id="reset">Reset</button>
     <br>
-    <button type="button">Power saving mode off</button>
+    <button type="button" id="powerOn">Power saving mode on</button>
+    <br>
+    <button type="button" id="powerOff">Power saving mode off</button>
     <br>
     <div>
-        Thermostat: 
     </div>
+
+    <section>
+      Power saving mode is currently: <span id="power-status"></span>
+      <br>
+      Current power usage: <span id="power-usage"></span>
+      <br>
+      Current thermostat temperature: <span id="current-temperature"></span>
+      <br>
+      Enter a city to find out its current temperature!
+      <br>
+      <span id="API-temp"></span>
+      <br>
+      <form id="select-city">
+        <input id="current-city" type="text" placeholder="Please enter a city"></input>
+        <input type="submit"></input>
+      </form>
+    </section>
 </body>
 
 </html>
